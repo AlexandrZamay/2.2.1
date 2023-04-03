@@ -1,13 +1,17 @@
 package hiber.model;
 
+import org.hibernate.engine.internal.Cascade;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
+   @OneToOne(cascade = CascadeType.ALL)
+   @MapsId
+   private Car car;
 
    @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
    @Column(name = "name")
@@ -20,7 +24,14 @@ public class User {
    private String email;
 
    public User() {}
-   
+
+   public User(Car car, String firstName, String lastName, String email) {
+      this.car = car;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
+   }
+
    public User(String firstName, String lastName, String email) {
       this.firstName = firstName;
       this.lastName = lastName;
