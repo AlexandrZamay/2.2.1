@@ -2,7 +2,13 @@ package hiber.model;
 
 import org.hibernate.engine.internal.Cascade;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.Column;
 
 @Entity
 @Table(name = "users")
